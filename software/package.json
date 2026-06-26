@@ -6,7 +6,7 @@
   "packageManager": "npm@11.8.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ayush1298567/SEEKR.git",
+    "url": "git+https://github.com/ayushg8/SEEKR.git",
     "directory": "software"
   },
   "engines": {

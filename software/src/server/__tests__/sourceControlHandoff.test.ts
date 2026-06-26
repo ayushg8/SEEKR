@@ -46,7 +46,7 @@ describe("source-control handoff audit", () => {
       status: "ready-source-control-handoff",
       ready: true,
       commandUploadEnabled: false,
-      repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
+      repositoryUrl: "https://github.com/ayushg8/SEEKR",
       gitMetadataPath: ".git",
       localBranch: "main",
       localHeadSha: LOCAL_SHA,
@@ -194,7 +194,7 @@ describe("source-control handoff audit", () => {
   });
 
   it("blocks when the GitHub landing README omits the fresh-clone operator path", async () => {
-    await writeFile(path.join(root, "..", "README.md"), "SEEKR source-control handoff: https://github.com/Ayush1298567/SEEKR\n", "utf8");
+    await writeFile(path.join(root, "..", "README.md"), "SEEKR source-control handoff: https://github.com/ayushg8/SEEKR\n", "utf8");
 
     const manifest = await buildSourceControlHandoff({
       root,
@@ -237,7 +237,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run plug-and-play",
@@ -297,7 +297,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -349,7 +349,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -402,7 +402,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -457,7 +457,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -512,7 +512,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -568,7 +568,7 @@ describe("source-control handoff audit", () => {
       "# SEEKR",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -625,7 +625,7 @@ describe("source-control handoff audit", () => {
       "For final proof, `npm run test:ai:local` and `npm run smoke:fresh-clone` must happen before `npm run audit:plug-and-play`.",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -681,7 +681,7 @@ describe("source-control handoff audit", () => {
       "The local plug-and-play path keeps command upload and hardware actuation disabled.",
       "",
       "```bash",
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "npm ci",
       "npm run setup:local",
@@ -1091,7 +1091,7 @@ describe("source-control handoff audit", () => {
       ...manifest,
       configuredRemoteUrls: ["https://github.com/example/not-seekr.git"]
     }).problems).toEqual(expect.arrayContaining([
-      expect.stringContaining("configured remote pointing at Ayush1298567/SEEKR")
+      expect.stringContaining("configured remote pointing at ayushg8/SEEKR")
     ]));
     expect(validateSourceControlHandoffManifest({
       ...manifest,
@@ -1110,7 +1110,7 @@ describe("source-control handoff audit", () => {
         ? {
           ...check,
           evidence: [
-            "https://github.com/Ayush1298567/SEEKR",
+            "https://github.com/ayushg8/SEEKR",
             "git clone --depth 1",
             "fresh-clone:README.md"
           ]
@@ -1180,22 +1180,22 @@ async function seedSourceControlProject(root: string) {
   await mkdir(path.join(root, ".git"), { recursive: true });
   await writeFile(path.join(root, ".git/config"), [
     "[remote \"origin\"]",
-    "\turl = git@github.com:Ayush1298567/SEEKR.git",
+    "\turl = git@github.com:ayushg8/SEEKR.git",
     ""
   ].join("\n"), "utf8");
   await writeFile(path.join(root, "package.json"), JSON.stringify({
     repository: {
       type: "git",
-      url: "git+https://github.com/Ayush1298567/SEEKR.git",
+      url: "git+https://github.com/ayushg8/SEEKR.git",
       directory: "software"
     }
   }), "utf8");
-  await writeFile(path.join(root, "README.md"), "See https://github.com/Ayush1298567/SEEKR for source-control handoff.\n", "utf8");
+  await writeFile(path.join(root, "README.md"), "See https://github.com/ayushg8/SEEKR for source-control handoff.\n", "utf8");
   await writeFile(path.join(root, "..", "README.md"), [
     "# SEEKR",
     "",
     "```bash",
-    "git clone https://github.com/Ayush1298567/SEEKR.git",
+    "git clone https://github.com/ayushg8/SEEKR.git",
     "cd SEEKR/software",
     "npm ci",
     "npm run setup:local",

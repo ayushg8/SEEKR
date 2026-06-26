@@ -424,7 +424,7 @@ async function seedPackageEvidence(root: string) {
 
 function freshCloneSmokeEvidence() {
   return [
-    "https://github.com/Ayush1298567/SEEKR",
+    "https://github.com/ayushg8/SEEKR",
     "git clone --depth 1",
     "npm ci --dry-run --ignore-scripts --no-audit --fund=false --prefer-offline",
     "fresh-clone-github-landing-readme-contract",
@@ -448,8 +448,8 @@ async function writeReadySourceControlHandoff(root: string, generatedAt = "2026-
     status: "ready-source-control-handoff",
     ready: true,
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-    packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
+    packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
     gitMetadataPath: "../.git",
     localBranch: "main",
     localHeadSha: "a".repeat(40),
@@ -459,7 +459,7 @@ async function writeReadySourceControlHandoff(root: string, generatedAt = "2026-
     freshCloneCheckedPathCount: REQUIRED_FRESH_CLONE_PATH_COUNT,
     workingTreeClean: true,
     workingTreeStatusLineCount: 0,
-    configuredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+    configuredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
     remoteDefaultBranch: "main",
     remoteRefCount: 1,
     blockedCheckCount: 0,

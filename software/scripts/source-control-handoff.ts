@@ -114,12 +114,12 @@ interface LocalGitState {
 }
 
 const DEFAULT_OUT_DIR = ".tmp/source-control-handoff";
-export const EXPECTED_REPOSITORY_URL = "https://github.com/Ayush1298567/SEEKR";
+export const EXPECTED_REPOSITORY_URL = "https://github.com/ayushg8/SEEKR";
 const REQUIRED_SOURCE_CONTROL_CHECK_IDS = ["repository-reference", "github-landing-readme", "local-git-metadata", "configured-github-remote", "github-remote-refs", "fresh-clone-smoke", "local-head-published", "working-tree-clean"];
 const GITHUB_LANDING_README_COMMAND_ORDER_EVIDENCE = "github-landing-readme-command-order";
 const GITHUB_LANDING_README_AI_READINESS_EVIDENCE = "github-landing-readme-ai-readiness-proof";
 const REQUIRED_GITHUB_LANDING_README_SIGNALS = [
-  "git clone https://github.com/Ayush1298567/SEEKR.git",
+  "git clone https://github.com/ayushg8/SEEKR.git",
   "cd SEEKR/software",
   "git pull --ff-only",
   "npm ci",
@@ -150,7 +150,7 @@ const REQUIRED_GITHUB_LANDING_README_SAFETY_PATTERNS = [
   }
 ];
 const REQUIRED_GITHUB_LANDING_README_COMMAND_ORDER = [
-  "git clone https://github.com/Ayush1298567/SEEKR.git",
+  "git clone https://github.com/ayushg8/SEEKR.git",
   "cd SEEKR/software",
   "npm ci",
   "npm run setup:local",
@@ -210,10 +210,10 @@ export async function buildSourceControlHandoff(options: {
   const checks: SourceControlHandoffCheck[] = [
     {
       id: "repository-reference",
-      status: /github\.com\/Ayush1298567\/SEEKR/i.test(referenceText) ? "pass" : "blocked",
-      details: /github\.com\/Ayush1298567\/SEEKR/i.test(referenceText)
+      status: /github\.com\/ayushg8\/SEEKR/i.test(referenceText) ? "pass" : "blocked",
+      details: /github\.com\/ayushg8\/SEEKR/i.test(referenceText)
         ? "Package metadata or README documentation names the SEEKR GitHub repository."
-        : "Package metadata or README documentation must name https://github.com/Ayush1298567/SEEKR.",
+        : "Package metadata or README documentation must name https://github.com/ayushg8/SEEKR.",
       evidence: ["package.json repository", "README.md", "../README.md"]
     },
     githubLandingReadmeCheck(parentReadme),
@@ -229,9 +229,9 @@ export async function buildSourceControlHandoff(options: {
       id: "configured-github-remote",
       status: configuredRemoteUrls.some(pointsAtExpectedRepository) ? "pass" : gitMetadata ? "blocked" : "warn",
       details: configuredRemoteUrls.some(pointsAtExpectedRepository)
-        ? "Local Git metadata has a remote pointing at Ayush1298567/SEEKR."
+        ? "Local Git metadata has a remote pointing at ayushg8/SEEKR."
         : gitMetadata
-          ? "Local Git metadata exists, but no configured remote points at Ayush1298567/SEEKR."
+          ? "Local Git metadata exists, but no configured remote points at ayushg8/SEEKR."
           : "No local Git metadata exists, so configured remotes cannot be inspected.",
       evidence: configuredRemoteUrls.length ? configuredRemoteUrls : [".git/config"]
     },
@@ -700,7 +700,7 @@ function remoteUrlsFromGitConfig(config: string) {
 }
 
 function pointsAtExpectedRepository(value: string) {
-  return /github\.com[:/]Ayush1298567\/SEEKR(?:\.git)?$/i.test(value.replace(/^git\+/, ""));
+  return /github\.com[:/]ayushg8\/SEEKR(?:\.git)?$/i.test(value.replace(/^git\+/, ""));
 }
 
 export function validateSourceControlHandoffManifest(manifest: unknown) {
@@ -779,7 +779,7 @@ export function validateSourceControlHandoffManifest(manifest: unknown) {
   if (ready && githubRemoteRefsPass && !String(manifest.remoteDefaultBranch ?? "")) problems.push("verified remote source-control handoff must include remoteDefaultBranch");
   if (ready && githubRemoteRefsPass && Number(manifest.remoteRefCount) < 1) problems.push("verified remote source-control handoff must include at least one GitHub remote ref");
   if (ready && (!Array.isArray(manifest.configuredRemoteUrls) || !manifest.configuredRemoteUrls.some((url) => pointsAtExpectedRepository(String(url))))) {
-    problems.push("ready source-control handoff must include a configured remote pointing at Ayush1298567/SEEKR");
+    problems.push("ready source-control handoff must include a configured remote pointing at ayushg8/SEEKR");
   }
   if (ready && manifest.workingTreeClean !== true) problems.push("ready source-control handoff must record workingTreeClean true");
   if (ready && manifest.workingTreeStatusLineCount !== 0) problems.push("ready source-control handoff must record zero working tree status lines");
@@ -945,8 +945,8 @@ function sourceControlNextActions(checks: SourceControlHandoffCheck[]): SourceCo
       status: "required",
       details: "Point the local worktree at the SEEKR GitHub repository before publication review.",
       commands: [
-        "git remote add origin git@github.com:Ayush1298567/SEEKR.git",
-        "git remote set-url origin git@github.com:Ayush1298567/SEEKR.git",
+        "git remote add origin git@github.com:ayushg8/SEEKR.git",
+        "git remote set-url origin git@github.com:ayushg8/SEEKR.git",
         "git remote -v"
       ],
       clearsCheckIds: ["configured-github-remote"]

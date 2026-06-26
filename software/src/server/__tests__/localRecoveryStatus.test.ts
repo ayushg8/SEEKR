@@ -34,9 +34,9 @@ describe("local recovery status", () => {
     expect(result.manifest.complete).toBe(false);
     expect(result.manifest.commandUploadEnabled).toBe(false);
     expect(result.manifest.sourceControl).toMatchObject({
-      repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-      packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-      configuredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+      repositoryUrl: "https://github.com/ayushg8/SEEKR",
+      packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+      configuredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
       localBranch: "main",
       remoteDefaultBranch: "main",
       remoteRefCount: 1,
@@ -86,9 +86,9 @@ describe("local recovery status", () => {
     expect(result.manifest.nextCommands).toContain("npm run plug-and-play");
     expect(localRecoveryStatusCliSummary(result)).toMatchObject({
       sourceControl: {
-        repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-        packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-        configuredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+        repositoryUrl: "https://github.com/ayushg8/SEEKR",
+        packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+        configuredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
         localBranch: "main",
         remoteDefaultBranch: "main",
         remoteRefCount: 1,
@@ -138,7 +138,7 @@ describe("local recovery status", () => {
     await expect(readFile(result.jsonPath, "utf8")).resolves.toContain("\"commandUploadEnabled\": false");
     await expect(readFile(result.jsonPath, "utf8")).resolves.toContain("\"attentionChecks\"");
     await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("SEEKR Local Recovery Status");
-    await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("Repository URL: https://github.com/Ayush1298567/SEEKR");
+    await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("Repository URL: https://github.com/ayushg8/SEEKR");
     await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("Working tree clean: true");
     await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("listener 123 cwd ~/Ayush/Prophet/prophet-console");
     await expect(readFile(result.markdownPath, "utf8")).resolves.toContain("Strict AI provider: ollama");
@@ -330,7 +330,7 @@ describe("local recovery status", () => {
     expect(manifest.status).toBe("blocked-local-recovery");
     expect(manifest.checks.find((check) => check.id === "source-control-handoff")).toMatchObject({
       status: "fail",
-      details: expect.stringContaining("repositoryUrl must be https://github.com/Ayush1298567/SEEKR")
+      details: expect.stringContaining("repositoryUrl must be https://github.com/ayushg8/SEEKR")
     });
   });
 
@@ -365,7 +365,7 @@ describe("local recovery status", () => {
     expect(manifest.status).toBe("blocked-local-recovery");
     expect(manifest.checks.find((check) => check.id === "plug-and-play-readiness")).toMatchObject({
       status: "fail",
-      details: expect.stringContaining("sourceControl.repositoryUrl must be https://github.com/Ayush1298567/SEEKR")
+      details: expect.stringContaining("sourceControl.repositoryUrl must be https://github.com/ayushg8/SEEKR")
     });
   });
 
@@ -548,9 +548,9 @@ async function seedRecoveryArtifacts(root: string) {
     status: "ready-source-control-handoff",
     ready: true,
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-    packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-    configuredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
+    packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+    configuredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
     localBranch: "main",
     remoteDefaultBranch: "main",
     remoteRefCount: 1,
@@ -652,9 +652,9 @@ async function seedRecoveryArtifacts(root: string) {
       generatedAt: FRESH_ARTIFACT_AT,
       status: "ready-source-control-handoff",
       ready: true,
-      repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-      packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-      configuredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+      repositoryUrl: "https://github.com/ayushg8/SEEKR",
+      packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+      configuredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
       localBranch: "main",
       remoteDefaultBranch: "main",
       remoteRefCount: 1,
@@ -671,7 +671,7 @@ async function seedRecoveryArtifacts(root: string) {
     freshClone: {
       path: ".tmp/fresh-clone-smoke/seekr-fresh-clone-smoke-test.json",
       status: "pass",
-      repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
+      repositoryUrl: "https://github.com/ayushg8/SEEKR",
       localHeadSha: HEAD_SHA,
       cloneHeadSha: HEAD_SHA,
       sourceControlHandoffLocalHeadSha: HEAD_SHA,
@@ -697,9 +697,9 @@ async function seedRecoveryArtifacts(root: string) {
       checkedFileCount: 42,
       secretScanStatus: "pass",
       sourceControlHandoffPath: ".tmp/source-control-handoff/seekr-source-control-handoff-test.json",
-      sourceControlHandoffRepositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+      sourceControlHandoffRepositoryUrl: "https://github.com/ayushg8/SEEKR",
+      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
       sourceControlHandoffLocalBranch: "main",
       sourceControlHandoffRemoteDefaultBranch: "main",
       sourceControlHandoffRemoteRefCount: 1,
@@ -827,21 +827,21 @@ function sourceControlChecks() {
     {
       id: "configured-github-remote",
       status: "pass",
-      details: "Local Git metadata has a remote pointing at Ayush1298567/SEEKR.",
-      evidence: ["https://github.com/Ayush1298567/SEEKR.git"]
+      details: "Local Git metadata has a remote pointing at ayushg8/SEEKR.",
+      evidence: ["https://github.com/ayushg8/SEEKR.git"]
     },
     {
       id: "github-remote-refs",
       status: "pass",
       details: "GitHub remote has 1 ref(s) and default branch main.",
-      evidence: ["https://github.com/Ayush1298567/SEEKR", "git ls-remote --symref"]
+      evidence: ["https://github.com/ayushg8/SEEKR", "git ls-remote --symref"]
     },
     {
       id: "fresh-clone-smoke",
       status: "pass",
       details: "Fresh clone contains required startup files and passes npm ci dry-run.",
       evidence: [
-        "https://github.com/Ayush1298567/SEEKR",
+        "https://github.com/ayushg8/SEEKR",
         "git clone --depth 1",
         "npm ci --dry-run --ignore-scripts --no-audit --fund=false --prefer-offline",
         "fresh-clone-github-landing-readme-contract",

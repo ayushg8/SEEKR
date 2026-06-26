@@ -20,13 +20,13 @@ describe("operator quickstart contract", () => {
   it("keeps the GitHub landing README aligned with the fresh-clone operator path", () => {
     const content = readFileSync(new URL("../../../../README.md", import.meta.url), "utf8");
 
-    expect(content).toContain("git clone https://github.com/Ayush1298567/SEEKR.git");
+    expect(content).toContain("git clone https://github.com/ayushg8/SEEKR.git");
     expect(content).toContain("cd SEEKR/software");
     expect(content).toContain("git pull --ff-only");
     expect(content).toContain("npm run audit:source-control");
     expect(content).toContain("npm run plug-and-play");
     expect(content).toContain("npm run smoke:rehearsal:start");
-    expect(content.indexOf("git clone https://github.com/Ayush1298567/SEEKR.git")).toBeLessThan(content.indexOf("cd SEEKR/software"));
+    expect(content.indexOf("git clone https://github.com/ayushg8/SEEKR.git")).toBeLessThan(content.indexOf("cd SEEKR/software"));
     expect(content.indexOf("cd SEEKR/software")).toBeLessThan(content.indexOf("npm ci"));
     expect(content.indexOf("npm run plug-and-play")).toBeLessThan(content.indexOf("npm run smoke:rehearsal:start"));
   });
@@ -57,7 +57,7 @@ describe("operator quickstart contract", () => {
 
   it("pins GitHub clone and software directory entry guidance as required signals", () => {
     expect(REQUIRED_OPERATOR_QUICKSTART_SIGNALS).toEqual(expect.arrayContaining([
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "git pull --ff-only",
       "software/"
@@ -143,7 +143,7 @@ describe("operator quickstart contract", () => {
 
   it("rejects quickstarts that put source-control audit after startup", () => {
     const content = [
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "git pull --ff-only",
       "software/",
@@ -165,7 +165,7 @@ describe("operator quickstart contract", () => {
 
   it("rejects quickstarts that put dependency installation after local setup", () => {
     const content = [
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "git pull --ff-only",
       "software/",
@@ -187,7 +187,7 @@ describe("operator quickstart contract", () => {
 
   it("rejects quickstarts that put bounded smoke proof before startup", () => {
     const content = [
-      "git clone https://github.com/Ayush1298567/SEEKR.git",
+      "git clone https://github.com/ayushg8/SEEKR.git",
       "cd SEEKR/software",
       "git pull --ff-only",
       "software/",
@@ -208,10 +208,10 @@ describe("operator quickstart contract", () => {
   });
 
   it("rejects quickstarts that omit GitHub clone guidance", () => {
-    const content = validQuickstartContent().replace("git clone https://github.com/Ayush1298567/SEEKR.git\n", "");
+    const content = validQuickstartContent().replace("git clone https://github.com/ayushg8/SEEKR.git\n", "");
 
     expect(operatorQuickstartOk(content)).toBe(false);
-    expect(operatorQuickstartProblems(content)).toContain("git clone https://github.com/Ayush1298567/SEEKR.git");
+    expect(operatorQuickstartProblems(content)).toContain("git clone https://github.com/ayushg8/SEEKR.git");
   });
 });
 

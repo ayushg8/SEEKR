@@ -61,7 +61,7 @@ describe("handoff bundle", () => {
       sourceControlHandoffPath: sourceControlPath,
       sourceControlHandoffStatus: "blocked-source-control-handoff",
       sourceControlHandoffReady: false,
-      sourceControlHandoffRepositoryUrl: "https://github.com/Ayush1298567/SEEKR",
+      sourceControlHandoffRepositoryUrl: "https://github.com/ayushg8/SEEKR",
       sourceControlHandoffConfiguredRemoteUrls: [],
       sourceControlHandoffRemoteRefCount: 0,
       plugAndPlaySetupPath: setupPath,
@@ -141,7 +141,7 @@ describe("handoff bundle", () => {
     expect(copiedTodoAudit.commandUploadEnabled).toBe(false);
     const copiedSourceControl = JSON.parse(await readFile(path.join(result.bundleDirectory, "artifacts", sourceControlPath), "utf8"));
     expect(copiedSourceControl.commandUploadEnabled).toBe(false);
-    expect(copiedSourceControl.repositoryUrl).toBe("https://github.com/Ayush1298567/SEEKR");
+    expect(copiedSourceControl.repositoryUrl).toBe("https://github.com/ayushg8/SEEKR");
     const copiedSetup = JSON.parse(await readFile(path.join(result.bundleDirectory, "artifacts", setupPath), "utf8"));
     expect(copiedSetup.commandUploadEnabled).toBe(false);
     const copiedFreshCloneSmoke = JSON.parse(await readFile(path.join(result.bundleDirectory, "artifacts", freshCloneSmokePath), "utf8"));
@@ -726,9 +726,9 @@ describe("handoff bundle", () => {
       status: "ready-local-alpha-review-bundle",
       sourceControlHandoffStatus: "ready-source-control-handoff",
       sourceControlHandoffReady: true,
-      sourceControlHandoffRepositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+      sourceControlHandoffRepositoryUrl: "https://github.com/ayushg8/SEEKR",
+      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
       sourceControlHandoffLocalBranch: "main",
       sourceControlHandoffRemoteDefaultBranch: "main",
       sourceControlHandoffRemoteRefCount: 1,
@@ -750,9 +750,9 @@ describe("handoff bundle", () => {
     expect(verification.manifest).toMatchObject({
       status: "pass",
       sourceControlHandoffPath: sourceControlPath,
-      sourceControlHandoffRepositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/Ayush1298567/SEEKR.git"],
+      sourceControlHandoffRepositoryUrl: "https://github.com/ayushg8/SEEKR",
+      sourceControlHandoffPackageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+      sourceControlHandoffConfiguredRemoteUrls: ["https://github.com/ayushg8/SEEKR.git"],
       sourceControlHandoffLocalBranch: "main",
       sourceControlHandoffRemoteDefaultBranch: "main",
       sourceControlHandoffRemoteRefCount: 1,
@@ -3085,8 +3085,8 @@ async function seedBundleEvidence(root: string) {
     status: "blocked-source-control-handoff",
     ready: false,
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-    packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
+    packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
     configuredRemoteUrls: [],
     remoteRefCount: 0,
     blockedCheckCount: 2,
@@ -3120,13 +3120,13 @@ async function seedBundleEvidence(root: string) {
         id: "github-remote-refs",
         status: "blocked",
         details: "GitHub remote is reachable but has no published refs/default branch yet.",
-        evidence: ["https://github.com/Ayush1298567/SEEKR", "git ls-remote --symref"]
+        evidence: ["https://github.com/ayushg8/SEEKR", "git ls-remote --symref"]
       },
       {
         id: "fresh-clone-smoke",
         status: "warn",
         details: "Fresh clone startup-file and npm ci dry-run coverage could not be proven while remote refs are missing.",
-        evidence: ["https://github.com/Ayush1298567/SEEKR", "git clone --depth 1", "npm ci --dry-run"]
+        evidence: ["https://github.com/ayushg8/SEEKR", "git clone --depth 1", "npm ci --dry-run"]
       },
       {
         id: "local-head-published",
@@ -3143,7 +3143,7 @@ async function seedBundleEvidence(root: string) {
     ],
     nextActionChecklist: [
       { id: "restore-or-initialize-local-git", status: "required", details: "Restore or initialize local Git metadata.", commands: ["git init"], clearsCheckIds: ["local-git-metadata"] },
-      { id: "configure-github-origin", status: "required", details: "Configure the GitHub origin remote.", commands: ["git remote add origin git@github.com:Ayush1298567/SEEKR.git"], clearsCheckIds: ["configured-github-remote"] },
+      { id: "configure-github-origin", status: "required", details: "Configure the GitHub origin remote.", commands: ["git remote add origin git@github.com:ayushg8/SEEKR.git"], clearsCheckIds: ["configured-github-remote"] },
       { id: "publish-reviewed-main", status: "required", details: "Publish the reviewed main branch.", commands: ["git push -u origin main"], clearsCheckIds: ["github-remote-refs"] },
       { id: "rerun-source-control-audit", status: "verification", details: "Rerun the source-control audit after publication.", commands: ["npm run audit:source-control"], clearsCheckIds: ["repository-reference", "github-landing-readme", "local-git-metadata", "configured-github-remote", "github-remote-refs", "fresh-clone-smoke", "local-head-published", "working-tree-clean"] }
     ],
@@ -3276,8 +3276,8 @@ async function seedBundleEvidence(root: string) {
     ok: true,
     status: "pass",
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-    cloneCommand: ["git", "clone", "--depth", "1", "https://github.com/Ayush1298567/SEEKR"],
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
+    cloneCommand: ["git", "clone", "--depth", "1", "https://github.com/ayushg8/SEEKR"],
     installCommand: ["npm", "ci", "--ignore-scripts", "--no-audit", "--fund=false", "--prefer-offline"],
     localHeadSha: "a".repeat(40),
     cloneHeadSha: "a".repeat(40),
@@ -3368,7 +3368,7 @@ async function seedBundleEvidence(root: string) {
     "## Setup",
     "",
     "```bash",
-    "git clone https://github.com/Ayush1298567/SEEKR.git",
+    "git clone https://github.com/ayushg8/SEEKR.git",
     "cd SEEKR/software",
     "git pull --ff-only",
     "npm ci",
@@ -3469,7 +3469,7 @@ function markSourceControlReady(manifest: {
 }) {
   manifest.status = "ready-source-control-handoff";
   manifest.ready = true;
-  manifest.configuredRemoteUrls = ["https://github.com/Ayush1298567/SEEKR.git"];
+  manifest.configuredRemoteUrls = ["https://github.com/ayushg8/SEEKR.git"];
   manifest.remoteRefCount = 1;
   manifest.blockedCheckCount = 0;
   manifest.warningCheckCount = 0;
@@ -3518,7 +3518,7 @@ function markSourceControlReadyWithRemoteWarnings(manifest: Parameters<typeof ma
 
 function freshCloneSmokeEvidence() {
   return [
-    "https://github.com/Ayush1298567/SEEKR",
+    "https://github.com/ayushg8/SEEKR",
     "git clone --depth 1",
     "npm ci --dry-run --ignore-scripts --no-audit --fund=false --prefer-offline",
     "fresh-clone-github-landing-readme-contract",

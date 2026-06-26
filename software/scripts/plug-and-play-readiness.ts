@@ -205,7 +205,7 @@ const REQUIRED_ENV_EXAMPLE_SIGNALS = [
 
 const REQUIRED_GSTACK_WORKFLOW_IDS = ["health", "review", "planning", "qa"];
 const REQUIRED_GSTACK_PERSPECTIVE_IDS = ["operator", "safety", "dx", "replay", "demo-readiness"];
-const EXPECTED_PACKAGE_REPOSITORY_URL = "git+https://github.com/Ayush1298567/SEEKR.git";
+const EXPECTED_PACKAGE_REPOSITORY_URL = "git+https://github.com/ayushg8/SEEKR.git";
 export const REQUIRED_PLUG_AND_PLAY_CHECK_IDS = [
   "command-surface",
   "operator-setup",
@@ -1950,7 +1950,7 @@ function plugAndPlayHeadValues(
 }
 
 function pointsAtExpectedRepository(value: string) {
-  return /github\.com[:/]Ayush1298567\/SEEKR(?:\.git)?$/i.test(value);
+  return /github\.com[:/]ayushg8\/SEEKR(?:\.git)?$/i.test(value);
 }
 
 function stringArray(value: unknown) {

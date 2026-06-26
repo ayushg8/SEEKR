@@ -560,7 +560,7 @@ async function seedDoctorProject(root: string) {
   await mkdir(path.join(root, ".tmp/source-control-handoff"), { recursive: true });
   await writeFile(path.join(root, ".git/config"), [
     "[remote \"origin\"]",
-    "\turl = git@github.com:Ayush1298567/SEEKR.git",
+    "\turl = git@github.com:ayushg8/SEEKR.git",
     ""
   ].join("\n"), "utf8");
   await writeFile(path.join(root, "package-lock.json"), JSON.stringify({
@@ -594,7 +594,7 @@ async function seedDoctorProject(root: string) {
     packageManager: "npm@11.8.0",
     repository: {
       type: "git",
-      url: "git+https://github.com/Ayush1298567/SEEKR.git",
+      url: "git+https://github.com/ayushg8/SEEKR.git",
       directory: "software"
     },
     engines: {
@@ -616,13 +616,13 @@ async function seedDoctorProject(root: string) {
       acceptance: "npm run check"
     }
   }), "utf8");
-  await writeFile(path.join(root, "README.md"), "Source-control reference: https://github.com/Ayush1298567/SEEKR\n", "utf8");
+  await writeFile(path.join(root, "README.md"), "Source-control reference: https://github.com/ayushg8/SEEKR\n", "utf8");
   await writeFile(path.join(root, ".tmp/source-control-handoff/seekr-source-control-handoff-test.json"), JSON.stringify({
     schemaVersion: 1,
     status: "ready-source-control-handoff",
     ready: true,
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
     gitMetadataPath: ".git",
     localBranch: "main",
     localHeadSha: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -632,7 +632,7 @@ async function seedDoctorProject(root: string) {
     freshCloneCheckedPathCount: REQUIRED_FRESH_CLONE_PATH_COUNT,
     workingTreeClean: true,
     workingTreeStatusLineCount: 0,
-    configuredRemoteUrls: ["git@github.com:Ayush1298567/SEEKR.git"],
+    configuredRemoteUrls: ["git@github.com:ayushg8/SEEKR.git"],
     remoteDefaultBranch: "main",
     remoteRefCount: 1,
     blockedCheckCount: 0,
@@ -697,7 +697,7 @@ async function seedDoctorProject(root: string) {
 
 function freshCloneSmokeEvidence() {
   return [
-    "https://github.com/Ayush1298567/SEEKR",
+    "https://github.com/ayushg8/SEEKR",
     "git clone --depth 1",
     "npm ci --dry-run --ignore-scripts --no-audit --fund=false --prefer-offline",
     "fresh-clone-github-landing-readme-contract",

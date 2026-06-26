@@ -5,7 +5,7 @@
 1. Clone the GitHub handoff repository and enter the runnable app directory:
 
    ```bash
-   git clone https://github.com/Ayush1298567/SEEKR.git
+   git clone https://github.com/ayushg8/SEEKR.git
    cd SEEKR/software
    ```
 

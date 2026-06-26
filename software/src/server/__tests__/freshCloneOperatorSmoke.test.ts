@@ -39,7 +39,7 @@ describe("fresh clone operator smoke", () => {
       ok: true,
       status: "pass",
       commandUploadEnabled: false,
-      repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
+      repositoryUrl: "https://github.com/ayushg8/SEEKR",
       localHeadSha: SHA,
       cloneHeadSha: SHA,
       localAiPrepareModel: "llama3.2:latest",
@@ -66,7 +66,7 @@ describe("fresh clone operator smoke", () => {
       }
     })).toBe(true);
     expect(commands[0]).toBe("git rev-parse HEAD");
-    expect(commands[1]).toContain("git clone --depth 1 https://github.com/Ayush1298567/SEEKR");
+    expect(commands[1]).toContain("git clone --depth 1 https://github.com/ayushg8/SEEKR");
     expect(commands.slice(2)).toEqual([
       "git rev-parse HEAD",
       "npm ci --ignore-scripts --no-audit --fund=false --prefer-offline",
@@ -288,9 +288,9 @@ function sourceControlArtifact() {
     status: "ready-source-control-handoff",
     ready: true,
     commandUploadEnabled: false,
-    repositoryUrl: "https://github.com/Ayush1298567/SEEKR",
-    packageRepositoryUrl: "git+https://github.com/Ayush1298567/SEEKR.git",
-    configuredRemoteUrls: ["git@github.com:Ayush1298567/SEEKR.git"],
+    repositoryUrl: "https://github.com/ayushg8/SEEKR",
+    packageRepositoryUrl: "git+https://github.com/ayushg8/SEEKR.git",
+    configuredRemoteUrls: ["git@github.com:ayushg8/SEEKR.git"],
     localBranch: "main",
     remoteDefaultBranch: "main",
     remoteRefCount: 1,
@@ -307,8 +307,8 @@ function sourceControlArtifact() {
       { id: "repository-reference", status: "pass", details: "ok", evidence: ["package.json repository"] },
       { id: "github-landing-readme", status: "pass", details: "ok", evidence: ["../README.md", "github-landing-readme-command-order", "github-landing-readme-ai-readiness-proof"] },
       { id: "local-git-metadata", status: "pass", details: "ok", evidence: [".git"] },
-      { id: "configured-github-remote", status: "pass", details: "ok", evidence: ["git@github.com:Ayush1298567/SEEKR.git"] },
-      { id: "github-remote-refs", status: "pass", details: "ok", evidence: ["https://github.com/Ayush1298567/SEEKR", "git ls-remote --symref"] },
+      { id: "configured-github-remote", status: "pass", details: "ok", evidence: ["git@github.com:ayushg8/SEEKR.git"] },
+      { id: "github-remote-refs", status: "pass", details: "ok", evidence: ["https://github.com/ayushg8/SEEKR", "git ls-remote --symref"] },
       { id: "fresh-clone-smoke", status: "pass", details: "ok", evidence: freshCloneSmokeEvidence() },
       { id: "local-head-published", status: "pass", details: "ok", evidence: [`HEAD:${SHA}`, `origin/main:${SHA}`] },
       { id: "working-tree-clean", status: "pass", details: "ok", evidence: ["git status --porcelain --untracked-files=normal"] }
@@ -395,7 +395,7 @@ function doctorArtifact(sourceControlPath: string) {
 
 function freshCloneSmokeEvidence() {
   return [
-    "https://github.com/Ayush1298567/SEEKR",
+    "https://github.com/ayushg8/SEEKR",
     "git clone --depth 1",
     "npm ci --dry-run --ignore-scripts --no-audit --fund=false --prefer-offline",
     "fresh-clone-github-landing-readme-contract",
